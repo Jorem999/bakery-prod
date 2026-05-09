@@ -29,3 +29,4 @@ Thumbs.db
 # Archivos de respaldo
 *.bak
 *.tmp
+backend/credentials.json
