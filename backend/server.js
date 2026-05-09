@@ -16,7 +16,7 @@ app.use('/api/products',        require('./src/routes/products'));
 app.use('/api/production',     require('./src/routes/production'));
 app.use('/api/ingredients',     require('./src/routes/ingredients'));
 app.use('/api/indirect-costs',  require('./src/routes/indirect-costs'));
-app.use('/api/scan',            require('./src/routes/scan'));
+// app.use('/api/scan',            require('./src/routes/scan'));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/index.html'));
