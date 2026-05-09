@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panaderia Nonna</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <div>🥐</div>
+    <h1>Panaderia Nonna</h1>
+    <span>Control de Produccion</span>
+</header>
+
+<nav>
+    <a href="#" class="active" onclick="showPage('produccion')">Produccion</a>
+    <a href="#" onclick="showPage('scan')">Escanear</a>
+    <a href="#" onclick="showPage('reporte')">Reportes</a>
+    <a href="#" onclick="showPage('maestros')">Maestros</a>
+</nav>
+
+<main class="layout-sidebar">
+    <!-- ===================== PAGINA: PRODUCCION ===================== -->
+    <div id="page-produccion" class="page-full">
+        <div class="sidebar-days">
+            <div class="sidebar-header">
+                <h3>Dias con registro</h3>
+                <button class="btn btn-success btn-sm" onclick="crearNuevoDia()">+ Nuevo</button>
+            </div>
+            <div id="lista-dias" class="days-list"></div>
+        </div>
+        <div class="content-day" id="panel-dia">
+            <div class="card empty-state">
+                <p>Selecciona un dia de la lista para ver su produccion</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== PAGINA: REPORTE ===================== -->
+    <div id="page-reporte" class="hidden page-full">
+        <div class="sidebar-days">
+            <div class="sidebar-header">
+                <h3>Dias con registro</h3>
+            </div>
+            <div id="lista-dias-reporte" class="days-list"></div>
+        </div>
+        <div class="content-day" id="panel-reporte">
+            <div class="card empty-state">
+                <p>Selecciona un dia para ver su reporte</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== PAGINA: MAESTROS ===================== -->
+    <div id="page-maestros" class="hidden page-full">
+        <div class="sidebar-days">
+            <div class="sidebar-header">
+                <h3>Maestros</h3>
+            </div>
+            <div class="days-list">
+                <div class="menu-item active" onclick="showMasterPanel('masas')">Masas base</div>
+                <div class="menu-item" onclick="showMasterPanel('productos')">Productos</div>
+                <div class="menu-item" onclick="showMasterPanel('ingredientes')">Ingredientes</div>
+                <div class="menu-item" onclick="showMasterPanel('costos')">Costos indirectos</div>
+            </div>
+        </div>
+        <div class="content-day" id="panel-maestros">
+            <div id="master-content"></div>
+        </div>
+    </div>
+
+</main>
+
+    <!-- ===================== PAGINA: ESCANEAR ===================== -->
+    <div id="page-scan" class="hidden page-full">
+        <div class="sidebar-days">
+            <div class="sidebar-header">
+                <h3>Digitalizar producción</h3>
+            </div>
+        </div>
+        <div class="content-day">
+            <div class="card">
+                <h3>Subir imagen escaneada</h3>
+                <div class="upload-area" id="upload-area">
+                    <input type="file" id="file-input" accept="image/*,.pdf" style="display:none">
+                    <div onclick="document.getElementById('file-input').click()">
+                        <p>📷 Click para seleccionar imagen</p>
+                        <p class="text-sm">o arrastra aquí</p>
+                    </div>
+                </div>
+                <div id="upload-preview" class="hidden">
+                    <img id="preview-img" style="max-width:100%;max-height:300px;">
+                </div>
+                <div id="scan-result" class="hidden">
+                    <h3>Datos extraídos</h3>
+                    <div id="parsed-data"></div>
+                    <div class="flex gap-2 mt-4">
+                        <button class="btn btn-primary" onclick="guardarProduccion()">Guardar en producción</button>
+                        <button class="btn btn-secondary" onclick="resetScan()">Limpiar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>
